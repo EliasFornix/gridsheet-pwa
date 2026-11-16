@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GridSheet PWA</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#107c41">
+</head>
+<body>
+  <header class="toolbar">
+    <div class="brand">GridSheet</div>
+    <div class="formula-bar">
+      <span id="cell-address">A1</span>
+      <input type="text" id="formula-input" placeholder="Inserisci un valore o una formula (es. =SOMMA(A1:A5) o =A1*2)">
+    </div>
+    <button id="clear-btn" title="Svuota foglio">Reset</button>
+  </header>
+
+  <main id="grid-container" class="grid-container">
+    <!-- La griglia 100x100 verrà generata dinamicamente da app.js -->
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js')
+        .then(() => console.log('Service Worker registrato'))
+        .catch(err => console.error('Errore SW:', err));
+    }
+  </script>
+</body>
+</html>
